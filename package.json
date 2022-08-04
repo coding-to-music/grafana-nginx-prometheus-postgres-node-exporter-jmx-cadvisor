@@ -1,0 +1,21 @@
+{
+  "name": "grafana-nginx-prometheus-postgres-node-exporter-jmx-cadvisor",
+  "version": "1.0.0",
+  "description": "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "git add . && git commit -m Build && git push",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/savvydatainsights/monitoring.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/savvydatainsights/monitoring/issues"
+  },
+  "homepage": "https://github.com/savvydatainsights/monitoring#readme"
+}
