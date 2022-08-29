@@ -1,6 +1,5 @@
-version: '3'
+version: "3"
 services:
-
   cadvisor:
     image: google/cadvisor:v0.32.0
     container_name: cadvisor
@@ -47,7 +46,8 @@ services:
       - node-exporter
 
   grafana:
-    image: grafana/grafana:5.3.2
+    # image: grafana/grafana:5.3.2
+    image: grafana/grafana:latest
     container_name: grafana
     restart: always
     volumes:
@@ -58,6 +58,11 @@ services:
       - 3000:3000
     depends_on:
       - prometheus
+    # environment:
+      # - GF_AUTH_DISABLE_LOGIN_FORM=true
+      # - GF_AUTH_ANONYMOUS_ENABLED=true
+      # - GF_AUTH_ANONYMOUS_ORG_NAME=Admin
+      # - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
 
   nginx:
     image: nginx:1.15.8
