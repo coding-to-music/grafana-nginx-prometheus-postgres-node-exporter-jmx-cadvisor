@@ -3,7 +3,7 @@ services:
   cadvisor:
     image: google/cadvisor:v0.32.0
     container_name: cadvisor
-    restart: always
+    restart: unless-stopped
     volumes:
       - /:/rootfs:ro
       - /var/run:/var/run:rw
@@ -16,7 +16,7 @@ services:
   node-exporter:
     image: prom/node-exporter:v0.17.0
     container_name: node-exporter
-    restart: always
+    restart: unless-stopped
     volumes:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
@@ -30,7 +30,7 @@ services:
   prometheus:
     image: prom/prometheus:v2.5.0
     container_name: prometheus
-    restart: always
+    restart: unless-stopped
     volumes:
       - ./prometheus:/etc/prometheus
     command:
@@ -49,7 +49,7 @@ services:
     # image: grafana/grafana:5.3.2
     image: grafana/grafana:latest
     container_name: grafana
-    restart: always
+    restart: unless-stopped
     volumes:
       - grafana_data:/var/lib/grafana
       - ./grafana/datasources:/etc/grafana/provisioning/datasources
@@ -59,15 +59,15 @@ services:
     depends_on:
       - prometheus
     # environment:
-      # - GF_AUTH_DISABLE_LOGIN_FORM=true
-      # - GF_AUTH_ANONYMOUS_ENABLED=true
-      # - GF_AUTH_ANONYMOUS_ORG_NAME=Admin
-      # - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+    # - GF_AUTH_DISABLE_LOGIN_FORM=true
+    # - GF_AUTH_ANONYMOUS_ENABLED=true
+    # - GF_AUTH_ANONYMOUS_ORG_NAME=Admin
+    # - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
 
   nginx:
     image: nginx:1.15.8
     container_name: nginx
-    restart: always
+    restart: unless-stopped
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
       - ./nginx/basic_auth:/etc/nginx/basic_auth
