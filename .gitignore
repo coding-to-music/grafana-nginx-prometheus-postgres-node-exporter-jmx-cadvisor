@@ -2,6 +2,7 @@
 .vagrant
 .vscode
 env
+.env
 
 # basic auth related
 *.htpasswd
