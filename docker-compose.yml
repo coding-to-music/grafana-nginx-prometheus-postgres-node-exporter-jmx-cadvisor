@@ -55,14 +55,14 @@ services:
       - ./grafana/datasources:/etc/grafana/provisioning/datasources
       - ./grafana/dashboards:/etc/grafana/provisioning/dashboards
     ports:
-      - 3000:3000
+      - 3001:3001
     depends_on:
       - prometheus
-    # environment:
-    # - GF_AUTH_DISABLE_LOGIN_FORM=true
-    # - GF_AUTH_ANONYMOUS_ENABLED=true
-    # - GF_AUTH_ANONYMOUS_ORG_NAME=Admin
-    # - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+    environment:
+      - GF_AUTH_DISABLE_LOGIN_FORM=true
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_NAME=Admin
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
 
   nginx:
     image: nginx:1.15.8
