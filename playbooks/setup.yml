@@ -68,6 +68,6 @@
       when: not fullchain_path.stat.exists
 
     - name: Set the monitoring environment up
-      docker_service:
+      docker_compose:
         project_name: monitoring
         project_src: ..
