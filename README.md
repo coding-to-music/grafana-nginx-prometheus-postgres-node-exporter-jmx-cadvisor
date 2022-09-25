@@ -138,3 +138,27 @@ The dashboards were slightly changed from its originals for enabling the alterna
 With the Ansible playbook [deploy-to-azure.yml](playbooks/deploy-to-azure.yml) is possible to deploy the monitoring solution to a VM in [Azure](https://azure.microsoft.com). The playbook creates all the required resources and then runs the services in the new remote VM, created from a [baked Ubuntu image](https://github.com/savvydatainsights/ubuntu).
 
 `ansible-playbook playbooks/deploy-to-azure.yml`
+
+# Stopping the containers
+
+```
+docker compose down
+
+docker ps
+```
+
+```
+sudo systemctl disable prometheus alertmanager znapzend_exporter grafana-server node_exporter
+```
+
+```
+sudo systemctl status prometheus alertmanager znapzend_exporter grafana-server node_exporter
+```
+
+```
+sudo systemctl list-units --failed
+
+or
+
+sudo systemctl list-units | grep -i failed
+```
